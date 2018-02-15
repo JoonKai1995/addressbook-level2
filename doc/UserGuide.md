@@ -34,7 +34,7 @@ Format: `help`
 > Help is also shown if you enter an incorrect command e.g. `abcd`
  
 ### Adding a person: `add`
-Adds a person to the address book<br>
+Adds a person to the address book<br> and auto-capitalises first letter
 Format: `add NAME [p]p/PHONE_NUMBER [p]e/EMAIL [p]a/ADDRESS [t/TAG]...` 
  
 > Words in `UPPER_CASE` are the parameters, items in `SQUARE_BRACKETS` are optional, 
@@ -46,7 +46,7 @@ Format: `add NAME [p]p/PHONE_NUMBER [p]e/EMAIL [p]a/ADDRESS [t/TAG]...`
 > Persons can have any number of tags (including 0)
 
 Examples: 
-* `add John Doe p/98765432 e/johnd@gmail.com a/John street, block 123, #01-01`
+* `add john Doe p/98765432 e/johnd@gmail.com a/John street, block 123, #01-01` (name will be John Doe)
 * `add Betsy Crowe pp/1234567 e/betsycrowe@gmail.com pa/Newgate Prison t/criminal t/friend`
 
 ### Listing all persons : `list`
@@ -57,12 +57,12 @@ Format: `list`
 Finds persons whose names contain any of the given keywords.<br>
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
-> The search is case sensitive, the order of the keywords does not matter, only the name is searched, 
+> The search is case insensitive, the order of the keywords does not matter, only the name is searched,
 and persons matching at least one keyword will be returned (i.e. `OR` search).
 
 Examples: 
 * `find John`<br>
-  Returns `John Doe` but not `john`
+  Returns `John Doe` so does `john`
 * `find Betsy Tim John`<br>
   Returns Any person having names `Betsy`, `Tim`, or `John`
 

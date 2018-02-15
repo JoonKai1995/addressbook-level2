@@ -21,7 +21,7 @@ public class AddCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a person to the address book. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a person to the address book. Auto-capitalises first letter."
             + "Contact details can be marked private by prepending 'p' to the prefix.\n"
             + "Parameters: NAME [p]p/PHONE [p]e/EMAIL [p]a/ADDRESS  [t/TAG]...\n"
             + "Example: " + COMMAND_WORD
@@ -46,8 +46,12 @@ public class AddCommand extends Command {
         for (String tagName : tags) {
             tagSet.add(new Tag(tagName));
         }
+
+        String backName = name.substring(1);
+        String cappedFirstLetter = Character.toString(name.charAt(0)).toUpperCase();
+        String cappedName = cappedFirstLetter + backName;
         this.toAdd = new Person(
-                new Name(name),
+                new Name(cappedName),
                 new Phone(phone, isPhonePrivate),
                 new Email(email, isEmailPrivate),
                 new Address(address, isAddressPrivate),
